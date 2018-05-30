@@ -1,0 +1,58 @@
+@import '../styles/variables';
+
+.generate-section-titles(10);
+
+.generate-section-titles(@count, @i: 0) when (@i =< @count) {
+  .sectionTitle-@{i} {
+    color: spin(@app-section-title-base-color, (@i + 1) * 20);
+  }
+  .generate-section-titles(@count, (@i + 1));
+}
+
+button {
+  border-radius: 5px;
+  outline: 0;
+  min-width: 100px;
+  margin: 5px;
+}
+
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header, .sectionTitle {
+  transition: @transition;
+  cursor: pointer;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  background-color: @app-color;
+  .app-title {
+    color: @app-header-color;
+  }
+  &:hover {
+    color: #288dc8;
+  }
+}
+
+.sectionTitle {
+  padding: 10px 0;
+  cursor: pointer;
+  &:hover {
+    transition: @transition;
+    color: #288dc8;
+  }
+}
+
+.pageIdentificator {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}

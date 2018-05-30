@@ -1,0 +1,28 @@
+.pageVisibility {
+  margin: auto;
+  text-align: center;
+  .stateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    left: 60px;
+    top: 140px;
+  }
+  .state {
+    font-size: 2rem;
+    text-decoration: line-through;
+    &.marked-state {
+      text-decoration: none;
+      span {
+        margin-left: 10px;
+      }
+      &:nth-last-of-type(1) {
+        color: #52b562;
+      }
+      &:nth-last-of-type(2) {
+        color: #ff6347;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.dragAndDrop {
+  .dropTarget {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px dashed lightgrey;
+    min-width: 1000px;
+    min-height: 100px;
+    max-width: 80%;
+    padding: 15px;
+    margin: 30px auto;
+    transition: all .3s ease-out;
+  }
+
+  .trash {
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/trash-closed.png');
+    background-size: cover;
+    &.isOver {
+      background-image: url('../../assets/trash-opened.png');
+    }
+  }
+
+  .dropTarget, .draggableItem {
+    font-size: 2rem;
+    margin: 5px;
+    &.isOver {
+      border: 3px dashed lightgrey;
+      background-color: papayawhip;
+    }
+  }
+
+  .isDragged {
+    visibility: hidden;
+  }
+
+  .isDragStarted {
+    opacity: 0.5;
+    color: green;
+  }
+
+  .isEntered {
+    background-color: red;
+  }
+
+  .panel {
+    opacity: 0.6;
+    display: none;
+  }
+}

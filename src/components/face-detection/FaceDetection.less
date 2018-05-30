@@ -1,0 +1,32 @@
+.faceDetection {
+  height: 100%;
+  .imageDetection {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+  }
+  .media-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    .controls {
+      text-align: center;
+    }
+    .detectFace {
+      margin-right: 50px;
+    }
+  }
+  .trash {
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/trash-closed.png');
+    background-size: cover;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%);
+    position: absolute;
+    &.isOver {
+      background-image: url('../../assets/trash-opened.png');
+    }
+  }
+}

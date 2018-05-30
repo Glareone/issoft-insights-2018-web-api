@@ -1,0 +1,154 @@
+@import '../../styles/global';
+
+.dialogWrapper {
+  text-align: center;
+  padding: 15px;
+  .browserDialog {
+    padding: 0;
+    border-radius: 4px;
+    border: 2px solid grey;
+    width: 600px;
+    min-height: 100px;
+  }
+
+  .dialogHeader {
+    text-align: left;
+    padding: 10px;
+    background-color: #71706d;
+    color: ivory;
+  }
+
+  .browserDialog::backdrop {
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  .result {
+    font-size: 100px;
+    font-weight: 600;
+    margin-top: 100px;
+  }
+
+  .dialogForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .formBody {
+    color: #666;
+    padding: 10px;
+    flex: 1;
+    .controls {
+      display: inline-block;
+      .innerWrapper {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .submitSection {
+    padding: 10px;
+    text-align: right;
+    background-color: #f1f0ec;
+  }
+  button {
+    padding: 10px 15px;
+    margin: 0 0 0 5px;
+    color: ivory;
+    background-color: green;
+    &.secondary {
+      color: ivory;
+      background-color: tomato;
+    }
+    &.primary {
+      color: ivory;
+      background-color: skyblue;
+    }
+  }
+
+  .checkboxInput {
+    display: inline-block;
+    margin-bottom: 10px;
+    .labelText {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    input[type="radio"] {
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: -9999px;
+    }
+
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    &.toggler {
+      label {
+        .toggler {
+          position: relative;
+          margin-right: 10px;
+          display: inline-block;
+          box-shadow: 0 0 3px ivory;
+          width: @toggler-slider-width;
+          height: @toggler-slider-height;
+          border-radius: 15px;
+          background-color: #d8d8d8;
+          transition: @transition;
+          &:before {
+            position: absolute;
+            content: "";
+            height: @toggler-size;
+            width: @toggler-size;
+            left: 0;
+            bottom: 0;
+            border-radius: 15px;
+            border: 2px solid #d8d8d8;
+            background-color: white;
+            transition: @transition;
+            box-sizing: border-box;
+          }
+        }
+        &:before {
+          display: none;
+        }
+      }
+
+      input[type="radio"] {
+        &:focus + label {
+          .toggler {
+            box-shadow: 0 0 1px green;
+          }
+        }
+        &:checked + label {
+          .toggler {
+            background-color: green;
+            &:before {
+              transform: translateX(100%) translateX(-8px);
+              border-color: green;
+              content: "";
+              background-color: ivory;
+            }
+          }
+          &.disabled {
+            .toggler {
+              background-color: #93c6e3;
+              &:before {
+                border-color: #93c6e3;
+              }
+            }
+          }
+        }
+      }
+      &.left {
+        label {
+          flex-direction: row-reverse;
+          .toggler {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "WEB-API-Demo",
+  "version": "0.0.1",
+  "description": "Demonstartion of interesting web apis",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node tools/serverDev.js"
+  },
+  "author": "Anton Vlasik",
+  "license": "ISC",
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "devDependencies": {
+    "autoprefixer": "~7.1.6",
+    "babel-cli": "~6.26.0",
+    "babel-core": "~6.26.0",
+    "babel-eslint": "~8.0.2",
+    "babel-helper-builder-react-jsx": "~6.26.0",
+    "babel-helper-define-map": "~6.26.0",
+    "babel-helper-regex": "~6.26.0",
+    "babel-jest": "~21.2.0",
+    "babel-loader": "~7.1.2",
+    "babel-preset-env": "~1.6.1",
+    "babel-preset-react": "~6.24.1",
+    "babel-preset-react-hmre": "~1.1.1",
+    "babel-preset-stage-1": "~6.24.1",
+    "babel-register": "~6.26.0",
+    "css-loader": "~0.28.7",
+    "express": "~4.16.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "~2.30.1",
+    "less": "~2.7.3",
+    "less-loader": "~4.0.5",
+    "open": "0.0.5",
+    "postcss": "~6.0.14",
+    "postcss-flexbugs-fixes": "~3.2.0",
+    "postcss-loader": "~2.0.8",
+    "prop-types": "~15.6.0",
+    "react-svg-loader": "~2.1.0",
+    "style-loader": "~0.19.0",
+    "url-loader": "~0.6.2",
+    "webpack": "~3.8.1",
+    "webpack-dev-server": "3.0.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "~6.26.0",
+    "classnames": "~2.2.5",
+    "react": "~16.1.0",
+    "react-dom": "~16.1.0",
+    "react-router-dom": "~4.2.2"
+  }
+}
