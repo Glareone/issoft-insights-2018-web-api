@@ -24,6 +24,10 @@ class FaceDetection extends React.Component {
     this.faceBox = faceBox;
   };
 
+  _mediaContainer = container => {
+    this.mediaContainer = container;
+  };
+
   _trash = trash => {
     this.trash = trash;
   };
@@ -88,7 +92,8 @@ class FaceDetection extends React.Component {
           const draggableItem = document.getElementById(s);
           if (event.target === this.trash) {
             draggableItem.parentElement.removeChild(draggableItem);
-            this.setState({showLandmarks: false, faceAppeared: false});
+            this.setState({showLandmarks: false, faceAppeared: null});
+            document.querySelectorAll('.detected-face-box').forEach(el => el.parentElement.removeChild(el));
           } else {
             document.getElementById(s) && event.target.appendChild(document.getElementById(s));
           }
@@ -144,6 +149,53 @@ class FaceDetection extends React.Component {
         console.log('Handled Error', err);
         this.stopVideo();
       });
+  };
+
+  detectFacesOnImage = target => {
+    this.faceDetector.detect(target)
+      .then(this.handleDetectFacesOnImage)
+      .catch(err => {
+        console.log('Handled Error', err);
+        this.stopVideo();
+      });
+  };
+
+  handleDetectFacesOnImage = faces => {
+    faces.forEach(face => {
+      const {width, height, top, left} = face.boundingBox;
+
+      const faceBox = document.createElement('div');
+      this.mediaContainer.appendChild(faceBox);
+      faceBox.classList.add('detected-face-box');
+      faceBox.style.cssText = `
+                position: absolute;
+                z-index: 2;
+                width: ${width}px;
+                height: ${height}px;
+                top: ${top}px;
+                left: ${left}px;
+              `;
+
+      face.landmarks.forEach((landmark, index) => {
+        if (landmark.type !== 'eye') {
+          return;
+        }
+
+        const [{x, y}] = landmark.locations;
+        const eye = document.createElement('div');
+        faceBox.appendChild(eye);
+        eye.style.cssText = `z-index: 2;
+             width: 35%;
+             height: 35%;
+             position: absolute;
+             background-size: cover;
+             top: calc(${y - top}px - 17%);
+             left: calc(${x - left}px - 17%);
+             background-image: url('https://orig00.deviantart.net/39bb/f/2016/217/1/0/free_googly_eye_by_terrakatski-dacmqt2.png');
+            `;
+      });
+    });
+    !this.state.showLandmarks && this.setState({showLandmarks: true});
   };
 
   handleDetectFaces = faces => {
@@ -210,11 +262,11 @@ class FaceDetection extends React.Component {
           {
             this.state.faceAppeared &&
             <div className="detectFace">
-              <button onClick={() => this.detectFaces(this.state.faceAppeared)}>DETECT FACE</button>
+              <button onClick={() => this.detectFacesOnImage(this.state.faceAppeared)}>DETECT FACE</button>
             </div>
           }
         </div>
-        <div className="media-container dropTarget">
+        <div ref={this._mediaContainer} className="media-container dropTarget">
           <video
             style={{display: this.state.videoPlaying ? 'block' : 'none'}}
             ref={this._videoRef}

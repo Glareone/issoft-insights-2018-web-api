@@ -96,9 +96,6 @@ class Dialog extends Component {
                   }
                 </div>
               </div>
-              <h3>
-                This is an extremely important decision in your life. Choose now and never regret!!!
-              </h3>
             </div>
             <div className="submitSection">
               <button
@@ -117,7 +114,7 @@ class Dialog extends Component {
             </div>
           </form>
         </dialog>
-        <button onClick={this.handleOpenModal}>Update details</button>
+        <button onClick={this.handleOpenModal}>Press me!</button>
         <h2 className="result">{this.state.chosenCrypto}</h2>
       </div>
     );

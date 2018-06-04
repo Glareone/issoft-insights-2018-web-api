@@ -26,6 +26,7 @@ class NetworkInformation extends Component {
       currentConnectionInfo.innerHTML = `<p>Connection type: <strong>${getValue(currentConnection.type)}</strong></p>`;
       currentConnectionInfo.innerHTML += `<p>Connection effective type: <strong>${getValue(currentConnection.effectiveType)}</strong></p>`;
       currentConnectionInfo.innerHTML += `<p>Download speed:<strong> ${getValue(currentConnection.downlink)} Mbps</strong></p>`;
+      currentConnectionInfo.innerHTML += `<p>Rtt:<strong> ${getValue(currentConnection.rtt)}</strong></p>`;
       currentConnectionInfo.innerHTML += `<p>Download max speed: <strong>${getValue(currentConnection.downlinkMax)} Mbps</strong></p>`;
     }
 
